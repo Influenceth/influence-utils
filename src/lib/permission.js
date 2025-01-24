@@ -6,6 +6,7 @@ import Lot from './lot.js';
 import Inventory from './inventory.js';
 
 const MAX_POLICY_DURATION = 31536000; // in IRL seconds
+const REPOSSESSION_AUCTION_DURATION = 604800; // in IRL seconds
 
 const IDS = {
   USE_LOT: 1,
@@ -250,14 +251,25 @@ const getPrepaidPolicyRate = (entity) => {
 };
 Entity.getPrepaidPolicyRate = getPrepaidPolicyRate;
 
+const getLotAuctionPrice = (leaseEndTime = 0, blockTime = 0) => {
+  const timeDiffHours = (blockTime - leaseEndTime) / 3600;
+  const auctionHours = REPOSSESSION_AUCTION_DURATION / 3600;
+  if (timeDiffHours < 0) return null;
+  if (timeDiffHours >= auctionHours) return 0;
+  return Math.pow(1.178787, auctionHours - timeDiffHours);
+};
+Entity.getLotAuctionPrice = getLotAuctionPrice;
+
 export default {
   IDS,
   TYPES,
   POLICY_IDS,
   POLICY_TYPES,
   MAX_POLICY_DURATION,
+  REPOSSESSION_AUCTION_DURATION,
 
   getAdaliaPrimeLotRate,
+  getLotAuctionPrice,
   getPolicyDetails,
   getPrepaidPolicyRate,
   isPermitted,
