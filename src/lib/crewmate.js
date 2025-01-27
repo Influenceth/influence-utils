@@ -1,12 +1,3 @@
-const CLASSES = {
-  0: { name: 'Undecided', description: 'Currently going through assignment...' },
-  1: { name: 'Pilot', description: 'Often restless, always ready for adventure, pilots are happiest when flying. Their expertise gets them and their crew where they want to go quickly, safely, efficiently.' },
-  2: { name: 'Engineer', description: 'If there is a problem, an engineer will find an answer. Whether it is buildings, ships, or processes, engineers are thrilled to be the one to solve the puzzle.' },
-  3: { name: 'Miner', description: 'On the surface it appears that miners value their strength over their brains, but like their quarry, the reality lies underneath: they are highly skilled and erudite in their area of expertise.' },
-  4: { name: 'Merchant', description: 'Predicting the ebb and flow of the market is about more than just the raw data, it is about anticipating the needs and desires of humanity- this is what merchants strive to understand.' },
-  5: { name: 'Scientist', description: 'Motivated by a desire to expand human knowledge, scientists learn from the past, while keeping their gaze steadily on the future.' }
-};
-
 const CLASS_IDS = {
   UNDECIDED: 0,
   PILOT: 1,
@@ -16,11 +7,13 @@ const CLASS_IDS = {
   SCIENTIST: 5
 };
 
-const COLLECTIONS = {
-  1: { name: 'Arvad Specialist' },
-  2: { name: 'Arvad Citizen' },
-  3: { name: 'Arvad Leadership' },
-  4: { name: 'Adalian' }
+const CLASSES = {
+  [CLASS_IDS.UNDECIDED]: { name: 'Undecided', description: 'Currently going through assignment...' },
+  [CLASS_IDS.PILOT]: { name: 'Pilot', description: 'Often restless, always ready for adventure, pilots are happiest when flying. Their expertise gets them and their crew where they want to go quickly, safely, efficiently.' },
+  [CLASS_IDS.ENGINEER]: { name: 'Engineer', description: 'If there is a problem, an engineer will find an answer. Whether it is buildings, ships, or processes, engineers are thrilled to be the one to solve the puzzle.' },
+  [CLASS_IDS.MINER]: { name: 'Miner', description: 'On the surface it appears that miners value their strength over their brains, but like their quarry, the reality lies underneath: they are highly skilled and erudite in their area of expertise.' },
+  [CLASS_IDS.MERCHANT]: { name: 'Merchant', description: 'Predicting the ebb and flow of the market is about more than just the raw data, it is about anticipating the needs and desires of humanity- this is what merchants strive to understand.' },
+  [CLASS_IDS.SCIENTIST]: { name: 'Scientist', description: 'Motivated by a desire to expand human knowledge, scientists learn from the past, while keeping their gaze steadily on the future.' }
 };
 
 const COLLECTION_IDS = {
@@ -30,20 +23,11 @@ const COLLECTION_IDS = {
   ADALIAN: 4
 };
 
-const DEPARTMENTS = {
-  1: { name: 'Navigation' },
-  2: { name: 'Education' },
-  3: { name: 'Knowledge' },
-  4: { name: 'Medicine' },
-  5: { name: 'Security' },
-  6: { name: 'Logistics' },
-  7: { name: 'Maintenance' },
-  8: { name: 'Technology' },
-  9: { name: 'Engineering' },
-  10: { name: 'Food Production' },
-  11: { name: 'Food Preparation' },
-  12: { name: 'Arts & Entertainment' },
-  13: { name: 'Management' }
+const COLLECTIONS = {
+  [COLLECTION_IDS.ARVAD_SPECIALIST]: { name: 'Arvad Specialist' },
+  [COLLECTION_IDS.ARVAD_CITIZEN]: { name: 'Arvad Citizen' },
+  [COLLECTION_IDS.ARVAD_LEADERSHIP]: { name: 'Arvad Leadership' },
+  [COLLECTION_IDS.ADALIAN]: { name: 'Adalian' }
 };
 
 const DEPARTMENT_IDS = {
@@ -60,6 +44,22 @@ const DEPARTMENT_IDS = {
   FOOD_PREPARATION: 11,
   ARTS_ENTERTAINMENT: 12,
   MANAGEMENT: 13
+};
+
+const DEPARTMENTS = {
+  [DEPARTMENT_IDS.NAVIGATION]: { name: 'Navigation' },
+  [DEPARTMENT_IDS.EDUCATION]: { name: 'Education' },
+  [DEPARTMENT_IDS.KNOWLEDGE]: { name: 'Knowledge' },
+  [DEPARTMENT_IDS.MEDICINE]: { name: 'Medicine' },
+  [DEPARTMENT_IDS.SECURITY]: { name: 'Security' },
+  [DEPARTMENT_IDS.LOGISTICS]: { name: 'Logistics' },
+  [DEPARTMENT_IDS.MAINTENANCE]: { name: 'Maintenance' },
+  [DEPARTMENT_IDS.TECHNOLOGY]: { name: 'Technology' },
+  [DEPARTMENT_IDS.ENGINEERING]: { name: 'Engineering' },
+  [DEPARTMENT_IDS.FOOD_PRODUCTION]: { name: 'Food Production' },
+  [DEPARTMENT_IDS.FOOD_PREPARATION]: { name: 'Food Preparation' },
+  [DEPARTMENT_IDS.ARTS_ENTERTAINMENT]: { name: 'Arts & Entertainment' },
+  [DEPARTMENT_IDS.MANAGEMENT]: { name: 'Management' }
 };
 
 const TITLES = {
@@ -138,58 +138,6 @@ const TRAIT_TYPES = {
   IMPACTFUL: 'impactful'
 };
 
-const TRAITS = {
-  1: { name: 'Drive: Survival', type: TRAIT_TYPES.COSMETIC, description: 'You need to live. Your primary drive is the survival of yourself, the people you know, and the species.' },
-  2: { name: 'Drive: Service', type: TRAIT_TYPES.COSMETIC, description: 'You need to fulfill your role. Your primary drive is to serve humanity for the greater good.' },
-  3: { name: 'Drive: Glory', type: TRAIT_TYPES.COSMETIC, description: 'You need to excel. Your primary drive is to be the best at whatever you do.' },
-  4: { name: 'Drive: Command', type: TRAIT_TYPES.COSMETIC, description: 'You need to be in control. Your primary drive is to lead others in what you know to be the right direction.' },
-  5: { name: 'Adventurous', type: TRAIT_TYPES.COSMETIC, description: 'You are bold, brave, and intrepid. You recognize that in order to move humanity forward, it is sometimes necessary to take that giant leap for mankind.' },
-  6: { name: 'Ambitious', type: TRAIT_TYPES.COSMETIC, description: 'You know what needs to be done, and you know that you are the one who can do it. You are driven to succeed, no matter the obstacles.' },
-  7: { name: 'Arrogant', type: TRAIT_TYPES.COSMETIC, description: 'Hubris may have been the downfall of lesser people, but you are steadfastly confident in your own abilities. Let other people be led around by those stronger than themselves, you know what you are capable of.' },
-  8: { name: 'Cautious', type: TRAIT_TYPES.COSMETIC, description: 'Let others leap before they look. You will stay with what you know works, until there is some proof that another course is safer.' },
-  9: { name: 'Creative', type: TRAIT_TYPES.COSMETIC, description: 'You seek to bring new ideas to light. Your mind is constantly wandering to the question "what if..." You want to see if you can explain the "unexplainable".' },
-  10: { name: 'Curious', type: TRAIT_TYPES.COSMETIC, description: 'You are excited to open your mind and learn something new. The universe is full of the undiscovered just waiting to be discovered.' },
-  11: { name: 'Fierce', type: TRAIT_TYPES.COSMETIC, description: 'You are a forceful person who is drawn to intensity. You have strong convictions and seek out others who do as well.' },
-  12: { name: 'Flexible', type: TRAIT_TYPES.COSMETIC, description: 'You are open-minded and able to quickly analyze new ideas. You are not stuck in the past and are always ready to respond to new challenges.' },
-  13: { name: 'Frantic', type: TRAIT_TYPES.COSMETIC, description: 'You are prone to anxiety and always forget your towel.' },
-  14: { name: 'Hopeful', type: TRAIT_TYPES.COSMETIC, description: 'You know the risks, you understand the downsides, but you just can\'t help your optimism. Besides, when has humanity ever truly expanded its abilities except when it held onto hope in the face of adversity?' },
-  15: { name: 'Independent', type: TRAIT_TYPES.COSMETIC, description: 'You are free-thinking and not prone to blindly following orders, unless there is a very good explanation behind those orders.' },
-  16: { name: 'Irrational', type: TRAIT_TYPES.COSMETIC, description: 'You don\'t waste your time with logic, at least not the type that makes sense to anyone else. You have never had the dubious honor of being called "reasonable."' },
-  17: { name: 'Loyal', type: TRAIT_TYPES.COSMETIC, description: 'You understand the importance of staying the course and trusting those around you to make rational decisions.' },
-  18: { name: 'Pragmatic', type: TRAIT_TYPES.COSMETIC, description: 'Instead of wasting time wishing for a better reality, you are firmly rooted in your present situation. You prefer to find the most practical solution to a problem, even if it isn\'t always the most desirable.' },
-  19: { name: 'Rational', type: TRAIT_TYPES.COSMETIC, description: 'You try not to let messy emotions cloud your thinking. Logic is the only reliable constant in the universe.' },
-  20: { name: 'Reckless', type: TRAIT_TYPES.COSMETIC, description: 'You believe that anyone who takes life too seriously will never know its true enjoyment. Meticulous plans and detailed outcome calculations are for others to worry about.' },
-  21: { name: 'Regressive', type: TRAIT_TYPES.COSMETIC, description: 'You look to the past and rely on what others have built or imagined. You prefer to rely upon what is tried and true, rather than innovate yourself into a disaster.' },
-  22: { name: 'Serious', type: TRAIT_TYPES.COSMETIC, description: 'You have no time for self-indulgent nonsense. You understand your role and responsibilities in the universe and you wish that others understood theirs.' },
-  23: { name: 'Steadfast', type: TRAIT_TYPES.COSMETIC, description: 'You are firm in your beliefs and prefer to rely on what is known, rather than dream about what could be. You believe that experience is the best teacher.' },
-  24: { name: 'Council Loyalist', type: TRAIT_TYPES.COSMETIC, description: 'You are loyal to the Prime Council and the last High Commander of the Arvad. ' },
-  25: { name: 'Council Moderate', type: TRAIT_TYPES.COSMETIC, description: 'You believe that there is no better alternative to the Prime Council and the last High Commander of the Arvad. ' },
-  26: { name: 'Independent Moderate', type: TRAIT_TYPES.COSMETIC, description: 'You are critical of the leadership of the Prime Council and the last High Commander of the Arvad.' },
-  27: { name: 'Independent Radical', type: TRAIT_TYPES.COSMETIC, description: 'You openly oppose the leadership of the Prime Council or the last High Commander of the Arvad. ' },
-  28: { name: 'Navigator', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 2% increased propellant velocity.' },
-  29: { name: 'Dietitian', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 10% decreased food consumption rate for your crew.' },
-  30: { name: 'Refiner', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased refining speed while refining materials.' },
-  31: { name: 'Surveyor', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 10% increased core sampling speed while surveying an asteroid.' },
-  32: { name: 'Hauler', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased inventory mass capacity.' },
-  33: { name: 'Optimistic', type: TRAIT_TYPES.COSMETIC, description: 'You know that no matter how dark it may seem now, dawn is just over the horizon.' },
-  34: { name: 'Thoughtful', type: TRAIT_TYPES.COSMETIC, description: 'You are not quick to choose. You often prefer to wait for more information before committing yourself.' },
-  35: { name: 'Pessimistic', type: TRAIT_TYPES.COSMETIC, description: 'You see no point in trying to fool yourself or anyone else. You often expect the worst and are rarely surprised by reality.' },
-  36: { name: 'Righteous', type: TRAIT_TYPES.COSMETIC, description: 'You believe that you are virtuous and hold others to a high moral standard.' },
-  37: { name: 'Communal', type: TRAIT_TYPES.COSMETIC, description: 'You believe in community and cooperation. We can all succeed, if we work together.' },
-  38: { name: 'Impartial', type: TRAIT_TYPES.COSMETIC, description: 'You are capable of viewing many issues without bias or prejudice.' },
-  39: { name: 'Enterprising', type: TRAIT_TYPES.COSMETIC, description: 'You are resourceful and able to build on the ideas of others.' },
-  40: { name: 'Opportunistic', type: TRAIT_TYPES.COSMETIC, description: 'You believe in taking advantage of being in the right place at the right time.' },
-  41: { name: 'Buster', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 2% increased propellant flow rate.' },
-  42: { name: 'Mogul', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 16% increased fee enforcement on market orders.' },
-  43: { name: 'Scholar', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased time to next technology.' },
-  44: { name: 'Recycler', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 10% decreased loss when deconstructing buildings.' },
-  45: { name: 'Mechanic', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased cost for ship repair.' },
-  46: { name: 'Operator', type: TRAIT_TYPES.IMPACTFUL, description: 'You have reduced rate of wear during ship operation.' },
-  47: { name: 'Logistician', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased surface transport speed.' },
-  48: { name: 'Experimenter', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased time to next invention.' },
-  49: { name: 'Builder', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased building construction speed.' },
-  50: { name: 'Prospector', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased core sample quality.' }
-};
 
 const TRAIT_IDS = {
   DRIVE_SURVIVAL: 1,
@@ -242,6 +190,59 @@ const TRAIT_IDS = {
   EXPERIMENTER: 48,
   BUILDER: 49,
   PROSPECTOR: 50
+};
+
+const TRAITS = {
+  [TRAIT_IDS.DRIVE_SURVIVAL]: { name: 'Drive: Survival', type: TRAIT_TYPES.COSMETIC, description: 'You need to live. Your primary drive is the survival of yourself, the people you know, and the species.' },
+  [TRAIT_IDS.DRIVE_SERVICE]: { name: 'Drive: Service', type: TRAIT_TYPES.COSMETIC, description: 'You need to fulfill your role. Your primary drive is to serve humanity for the greater good.' },
+  [TRAIT_IDS.DRIVE_GLORY]: { name: 'Drive: Glory', type: TRAIT_TYPES.COSMETIC, description: 'You need to excel. Your primary drive is to be the best at whatever you do.' },
+  [TRAIT_IDS.DRIVE_COMMAND]: { name: 'Drive: Command', type: TRAIT_TYPES.COSMETIC, description: 'You need to be in control. Your primary drive is to lead others in what you know to be the right direction.' },
+  [TRAIT_IDS.ADVENTUROUS]: { name: 'Adventurous', type: TRAIT_TYPES.COSMETIC, description: 'You are bold, brave, and intrepid. You recognize that in order to move humanity forward, it is sometimes necessary to take that giant leap for mankind.' },
+  [TRAIT_IDS.AMBITIOUS]: { name: 'Ambitious', type: TRAIT_TYPES.COSMETIC, description: 'You know what needs to be done, and you know that you are the one who can do it. You are driven to succeed, no matter the obstacles.' },
+  [TRAIT_IDS.ARROGANT]: { name: 'Arrogant', type: TRAIT_TYPES.COSMETIC, description: 'Hubris may have been the downfall of lesser people, but you are steadfastly confident in your own abilities. Let other people be led around by those stronger than themselves, you know what you are capable of.' },
+  [TRAIT_IDS.CAUTIOUS]: { name: 'Cautious', type: TRAIT_TYPES.COSMETIC, description: 'Let others leap before they look. You will stay with what you know works, until there is some proof that another course is safer.' },
+  [TRAIT_IDS.CREATIVE]: { name: 'Creative', type: TRAIT_TYPES.COSMETIC, description: 'You seek to bring new ideas to light. Your mind is constantly wandering to the question "what if..." You want to see if you can explain the "unexplainable".' },
+  [TRAIT_IDS.CURIOUS]: { name: 'Curious', type: TRAIT_TYPES.COSMETIC, description: 'You are excited to open your mind and learn something new. The universe is full of the undiscovered just waiting to be discovered.' },
+  [TRAIT_IDS.FIERCE]: { name: 'Fierce', type: TRAIT_TYPES.COSMETIC, description: 'You are a forceful person who is drawn to intensity. You have strong convictions and seek out others who do as well.' },
+  [TRAIT_IDS.FLEXIBLE]: { name: 'Flexible', type: TRAIT_TYPES.COSMETIC, description: 'You are open-minded and able to quickly analyze new ideas. You are not stuck in the past and are always ready to respond to new challenges.' },
+  [TRAIT_IDS.FRANTIC]: { name: 'Frantic', type: TRAIT_TYPES.COSMETIC, description: 'You are prone to anxiety and always forget your towel.' },
+  [TRAIT_IDS.HOPEFUL]: { name: 'Hopeful', type: TRAIT_TYPES.COSMETIC, description: 'You know the risks, you understand the downsides, but you just can\'t help your optimism. Besides, when has humanity ever truly expanded its abilities except when it held onto hope in the face of adversity?' },
+  [TRAIT_IDS.INDEPENDENT]: { name: 'Independent', type: TRAIT_TYPES.COSMETIC, description: 'You are free-thinking and not prone to blindly following orders, unless there is a very good explanation behind those orders.' },
+  [TRAIT_IDS.IRRATIONAL]: { name: 'Irrational', type: TRAIT_TYPES.COSMETIC, description: 'You don\'t waste your time with logic, at least not the type that makes sense to anyone else. You have never had the dubious honor of being called "reasonable."' },
+  [TRAIT_IDS.LOYAL]: { name: 'Loyal', type: TRAIT_TYPES.COSMETIC, description: 'You understand the importance of staying the course and trusting those around you to make rational decisions.' },
+  [TRAIT_IDS.PRAGMATIC]: { name: 'Pragmatic', type: TRAIT_TYPES.COSMETIC, description: 'Instead of wasting time wishing for a better reality, you are firmly rooted in your present situation. You prefer to find the most practical solution to a problem, even if it isn\'t always the most desirable.' },
+  [TRAIT_IDS.RATIONAL]: { name: 'Rational', type: TRAIT_TYPES.COSMETIC, description: 'You try not to let messy emotions cloud your thinking. Logic is the only reliable constant in the universe.' },
+  [TRAIT_IDS.RECKLESS]: { name: 'Reckless', type: TRAIT_TYPES.COSMETIC, description: 'You believe that anyone who takes life too seriously will never know its true enjoyment. Meticulous plans and detailed outcome calculations are for others to worry about.' },
+  [TRAIT_IDS.REGRESSIVE]: { name: 'Regressive', type: TRAIT_TYPES.COSMETIC, description: 'You look to the past and rely on what others have built or imagined. You prefer to rely upon what is tried and true, rather than innovate yourself into a disaster.' },
+  [TRAIT_IDS.SERIOUS]: { name: 'Serious', type: TRAIT_TYPES.COSMETIC, description: 'You have no time for self-indulgent nonsense. You understand your role and responsibilities in the universe and you wish that others understood theirs.' },
+  [TRAIT_IDS.STEADFAST]: { name: 'Steadfast', type: TRAIT_TYPES.COSMETIC, description: 'You are firm in your beliefs and prefer to rely on what is known, rather than dream about what could be. You believe that experience is the best teacher.' },
+  [TRAIT_IDS.COUNCIL_LOYALIST]: { name: 'Council Loyalist', type: TRAIT_TYPES.COSMETIC, description: 'You are loyal to the Prime Council and the last High Commander of the Arvad. ' },
+  [TRAIT_IDS.COUNCIL_MODERATE]: { name: 'Council Moderate', type: TRAIT_TYPES.COSMETIC, description: 'You believe that there is no better alternative to the Prime Council and the last High Commander of the Arvad. ' },
+  [TRAIT_IDS.INDEPENDENT_MODERATE]: { name: 'Independent Moderate', type: TRAIT_TYPES.COSMETIC, description: 'You are critical of the leadership of the Prime Council and the last High Commander of the Arvad.' },
+  [TRAIT_IDS.INDEPENDENT_RADICAL]: { name: 'Independent Radical', type: TRAIT_TYPES.COSMETIC, description: 'You openly oppose the leadership of the Prime Council or the last High Commander of the Arvad. ' },
+  [TRAIT_IDS.NAVIGATOR]: { name: 'Navigator', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 2% increased propellant velocity.' },
+  [TRAIT_IDS.DIETITIAN]: { name: 'Dietitian', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 10% decreased food consumption rate for your crew.' },
+  [TRAIT_IDS.REFINER]: { name: 'Refiner', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased refining speed while refining materials.' },
+  [TRAIT_IDS.SURVEYOR]: { name: 'Surveyor', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 10% increased core sampling speed while surveying an asteroid.' },
+  [TRAIT_IDS.HAULER]: { name: 'Hauler', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased inventory mass capacity.' },
+  [TRAIT_IDS.OPTIMISTIC]: { name: 'Optimistic', type: TRAIT_TYPES.COSMETIC, description: 'You know that no matter how dark it may seem now, dawn is just over the horizon.' },
+  [TRAIT_IDS.THOUGHTFUL]: { name: 'Thoughtful', type: TRAIT_TYPES.COSMETIC, description: 'You are not quick to choose. You often prefer to wait for more information before committing yourself.' },
+  [TRAIT_IDS.PESSIMISTIC]: { name: 'Pessimistic', type: TRAIT_TYPES.COSMETIC, description: 'You see no point in trying to fool yourself or anyone else. You often expect the worst and are rarely surprised by reality.' },
+  [TRAIT_IDS.RIGHTEOUS]: { name: 'Righteous', type: TRAIT_TYPES.COSMETIC, description: 'You believe that you are virtuous and hold others to a high moral standard.' },
+  [TRAIT_IDS.COMMUNAL]: { name: 'Communal', type: TRAIT_TYPES.COSMETIC, description: 'You believe in community and cooperation. We can all succeed, if we work together.' },
+  [TRAIT_IDS.IMPARTIAL]: { name: 'Impartial', type: TRAIT_TYPES.COSMETIC, description: 'You are capable of viewing many issues without bias or prejudice.' },
+  [TRAIT_IDS.ENTERPRISING]: { name: 'Enterprising', type: TRAIT_TYPES.COSMETIC, description: 'You are resourceful and able to build on the ideas of others.' },
+  [TRAIT_IDS.OPPORTUNISTIC]: { name: 'Opportunistic', type: TRAIT_TYPES.COSMETIC, description: 'You believe in taking advantage of being in the right place at the right time.' },
+  [TRAIT_IDS.BUSTER]: { name: 'Buster', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 2% increased propellant flow rate.' },
+  [TRAIT_IDS.MOGUL]: { name: 'Mogul', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 16% increased fee enforcement on market orders.' },
+  [TRAIT_IDS.SCHOLAR]: { name: 'Scholar', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased time to next technology.' },
+  [TRAIT_IDS.RECYCLER]: { name: 'Recycler', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 10% decreased loss when deconstructing buildings.' },
+  [TRAIT_IDS.MECHANIC]: { name: 'Mechanic', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased cost for ship repair.' },
+  [TRAIT_IDS.OPERATOR]: { name: 'Operator', type: TRAIT_TYPES.IMPACTFUL, description: 'You have reduced rate of wear during ship operation.' },
+  [TRAIT_IDS.LOGISTICIAN]: { name: 'Logistician', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased surface transport speed.' },
+  [TRAIT_IDS.EXPERIMENTER]: { name: 'Experimenter', type: TRAIT_TYPES.IMPACTFUL, description: 'You have decreased time to next invention.' },
+  [TRAIT_IDS.BUILDER]: { name: 'Builder', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased building construction speed.' },
+  [TRAIT_IDS.PROSPECTOR]: { name: 'Prospector', type: TRAIT_TYPES.IMPACTFUL, description: 'You have 5% increased core sample quality.' }
 };
 
 const ABILITY_IDS = {
